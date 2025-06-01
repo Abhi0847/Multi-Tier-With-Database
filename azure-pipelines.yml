@@ -60,11 +60,7 @@ stages:
           - task: SonarQubePrepare@7
             inputs:
               SonarQube: 'sonar-server'
-              scannerMode: 'cli'
-              configMode: 'manual'
-              cliProjectKey: 'bankapp'
-              cliProjectName: 'bankapp'
-              cliSources: '.'
+              scannerMode: 'other'
               extraProperties: |
                 # Additional properties that will be passed to the scanner, 
                 # Put one key=value per line, example:
@@ -76,10 +72,10 @@ stages:
               jdkversion: 'JAVA_HOME_17_X64'
 
   - stage: Build
-    displayName: 'Maven Test'
+    displayName: 'Maven Build'
     jobs:
       - job: maven_test
-        displayName: 'Unit_Test'
+        displayName: 'Build'
         steps:
           - task: Maven@4
             inputs:
